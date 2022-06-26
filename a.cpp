@@ -3,32 +3,41 @@
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
+#include<algorithm>
 
-// int lengthOfLongestSubstring(string s) {
+void solve(vector<int>& candidates, int target, vector<vector<int>> &ans, vector<int> &temp, int index){
+    if(target == 0){
+        ans.push_back(temp);
+        return;
+    }
+    if(target < 0){
+        temp.pop_back();
+        return;
+    }
+    if(index == candidates.size()){
+        return;
+    }
     
-//     vector < int > mpp(128, -1);
-
-//     int left = 0, right = 0;
-//     int n = s.size();
-//     int len = 0;
+    temp.push_back(candidates[index]);
+    solve(candidates, target-candidates[index], ans, temp, index+1);
     
-//     while (right < n) {
-//         if (mpp[s[right]] != -1){
-//             // left = max(mpp[s[right]] + 1, left);
-//             left = mpp[s[right]] + 1;   
+    temp.pop_back();
+    target += candidates[index-1];
+    solve(candidates, target, ans, temp, index+1);
+}
 
-//         }
-
-//         mpp[s[right]] = right;
-
-//         len = max(len, right - left + 1);
-//         right++;
-//     }
+vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+    vector<vector<int>> ans;
+    vector<int> temp;
+    sort(candidates.begin(), candidates.end());
     
-//     return len;
-// }
+    solve(candidates, target, ans, temp, 0);
+    return ans;
+}
 
 int main()
 {
-    cout << 3/5 << endl;
+    vector<int> v{10,1,2,7,6,1,5};
+
+    combinationSum2(v, 8);
 }
