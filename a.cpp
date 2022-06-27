@@ -5,39 +5,38 @@
 using namespace std;
 #include<algorithm>
 
-void solve(vector<int>& candidates, int target, vector<vector<int>> &ans, vector<int> &temp, int index){
-    if(target == 0){
+void solve(int index, vector <int> & arr, int n, vector<vector<int>> &ans, vector<int> temp) {
+    if (index == n) {
+        for(int i=0; i<temp.size(); i++){
+            cout << temp[i] << " ";
+        }
+        cout << endl;
         ans.push_back(temp);
         return;
     }
-    if(target < 0){
-        temp.pop_back();
-        return;
-    }
-    if(index == candidates.size()){
-        return;
-    }
     
-    temp.push_back(candidates[index]);
-    solve(candidates, target-candidates[index], ans, temp, index+1);
-    
+    temp.push_back(arr[index]);
+    solve(index+1, arr, n, ans, temp);
     temp.pop_back();
-    target += candidates[index-1];
-    solve(candidates, target, ans, temp, index+1);
+    solve(index+1, arr, n, ans, temp);
 }
-
-vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+vector<vector<int>> subsetSums(vector < int > arr, int n) {
     vector<vector<int>> ans;
     vector<int> temp;
-    sort(candidates.begin(), candidates.end());
-    
-    solve(candidates, target, ans, temp, 0);
+    solve(0, arr, n, ans, temp);
+
+    for(int i=0; i<ans.size(); i++){
+        for(int j=0; j<ans[i].size(); j++){
+            cout << ans[i][j] << " ";
+        }
+        cout << endl;
+    }
     return ans;
 }
 
 int main()
 {
-    vector<int> v{10,1,2,7,6,1,5};
+    vector<int> v{1, 2, 3};
 
-    combinationSum2(v, 8);
+    subsetSums(v, v.size());
 }
