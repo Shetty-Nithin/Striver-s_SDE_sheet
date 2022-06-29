@@ -5,32 +5,33 @@
 using namespace std;
 #include<algorithm>
 
-void solve(int index, vector <int> & arr, int n, vector<vector<int>> &ans, vector<int> temp) {
-    if (index == n) {
-        for(int i=0; i<temp.size(); i++){
-            cout << temp[i] << " ";
+void recurPermute(vector < int > & ds, vector < int > & nums, vector < vector < int >> & ans, int freq[]) {
+    if (ds.size() == nums.size()) {
+        ans.push_back(ds);
+        for(int i=0; i<ds.size(); i++){
+            cout << ds[i] << " ";
         }
-        cout << endl;
-        ans.push_back(temp);
+        cout << endl; 
         return;
     }
-    
-    temp.push_back(arr[index]);
-    solve(index+1, arr, n, ans, temp);
-    temp.pop_back();
-    solve(index+1, arr, n, ans, temp);
-}
-vector<vector<int>> subsetSums(vector < int > arr, int n) {
-    vector<vector<int>> ans;
-    vector<int> temp;
-    solve(0, arr, n, ans, temp);
 
-    for(int i=0; i<ans.size(); i++){
-        for(int j=0; j<ans[i].size(); j++){
-            cout << ans[i][j] << " ";
-        }
-        cout << endl;
+    for (int i = 0; i < nums.size(); i++) {
+    if (!freq[i]) {
+        ds.push_back(nums[i]);
+        freq[i] = 1;
+        recurPermute(ds, nums, ans, freq);
+        freq[i] = 0;
+        ds.pop_back();
     }
+    }
+}
+
+vector < vector < int >> permute(vector < int > & nums) {
+    vector < vector < int >> ans;
+    vector < int > ds;
+    int freq[3];
+    for (int i = 0; i < nums.size(); i++) freq[i] = 0;
+    recurPermute(ds, nums, ans, freq);
     return ans;
 }
 
@@ -38,5 +39,5 @@ int main()
 {
     vector<int> v{1, 2, 3};
 
-    subsetSums(v, v.size());
+    permute(v);
 }
