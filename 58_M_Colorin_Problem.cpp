@@ -34,7 +34,7 @@ bool solve(bool graph[101][101], int m, int n, int node, int color[]){
 }
 
 bool graphColoring(bool graph[101][101], int m, int n) {
-    int color[8] = {0}; // n=8
+    int color[8] = {0}; // n=859_
     if(solve(graph, m, n, 0, color)) return true;
     return false;
 }
