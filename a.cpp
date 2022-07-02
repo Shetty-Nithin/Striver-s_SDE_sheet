@@ -2,42 +2,43 @@
 
 #include<iostream>
 #include<bits/stdc++.h>
-using namespace std;
 #include<algorithm>
+#include<climits>
+using namespace std;
 
-void recurPermute(vector < int > & ds, vector < int > & nums, vector < vector < int >> & ans, int freq[]) {
-    if (ds.size() == nums.size()) {
-        ans.push_back(ds);
-        for(int i=0; i<ds.size(); i++){
-            cout << ds[i] << " ";
+int findMedian(vector<vector<int> > &A) {
+    int left = 0;
+    int right = INT_MAX;
+    int totalSize = A.size() * A[0].size();
+    int mid;
+
+    while(right - left > 1){
+        mid = left + (right - left) / 2;
+        int count = 0;
+        for(auto &a: A){ 
+            int p = upper_bound(a.begin(), a.end(), mid) - a.begin();
+            cout << "mid is : " << mid << endl;
+            count += p;
+            cout << "count is : " << count << endl;
+            cout << "------------------" << endl;
         }
-        cout << endl; 
-        return;
-    }
-
-    for (int i = 0; i < nums.size(); i++) {
-    if (!freq[i]) {
-        ds.push_back(nums[i]);
-        freq[i] = 1;
-        recurPermute(ds, nums, ans, freq);
-        freq[i] = 0;
-        ds.pop_back();
-    }
-    }
+        if(count >= (totalSize/2 +1)){
+            right = mid;
+        }
+        else{
+            left = mid;
+        }
+    }   
+    cout << right << endl;
+    return right;
 }
 
-vector < vector < int >> permute(vector < int > & nums) {
-    vector < vector < int >> ans;
-    vector < int > ds;
-    int freq[3];
-    for (int i = 0; i < nums.size(); i++) freq[i] = 0;
-    recurPermute(ds, nums, ans, freq);
-    return ans;
-}
 
 int main()
 {
-    vector<int> v{1, 2, 3};
+    vector<vector<int>> A =  {  {'1', '3', '5'},
+                                {'2', '6', '9'},
+                                {'3', '6', '9'}   };
 
-    permute(v);
+    findMedian(A);
 }
