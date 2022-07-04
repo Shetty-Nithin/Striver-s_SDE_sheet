@@ -49,3 +49,46 @@ int books(vector<int> &A, int B) {
     
     return ans;
 }
+
+// Coding Ninjas
+bool isPossible(vector<int> &A, int days, long long mid){
+    int daysCount = 1;
+    long long int totalTime = 0;
+    
+    for(int i=0; i<A.size(); i++){
+        if((totalTime + A[i]) <= mid){
+            totalTime += A[i];
+        }else{
+            daysCount++;
+            if(daysCount > days || A[i] > mid){
+                return false;
+            }
+            totalTime = A[i];
+        }
+    }
+    return true;
+}
+
+long long ayushGivesNinjatest(int days, int chapters, vector<int> A) {
+    if(days > A.size()) return -1;
+    
+    long long start = 0;
+    long long end = 0;
+    for(int i=0; i<chapters; i++){
+        end = end + A[i];
+    }
+    
+    long long ans = -1;
+    long long mid = start + (end-start)/2;
+    while(start <= end){
+        if(isPossible(A, days, mid)){
+            ans = mid;
+            end = mid-1;
+        }else{
+            start = mid+1;
+        }
+        mid = start + (end-start)/2;
+    }
+    
+    return ans;
+}
