@@ -18,6 +18,7 @@
         "xiosbase": "cpp",
         "xstring": "cpp",
         "xtree": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "ostream": "cpp"
     }
 }
