@@ -1,9 +1,9 @@
+// Link : https://www.codingninjas.com/codestudio/problems/sort-a-stack_985275?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
 
 
 #include<iostream>
 #include<bits/stdc++.h>
-#include<algorithm>
-#include<climits>
+#include<string>
 using namespace std;
 
 void sort(stack<int> &stack, int &store){
@@ -33,19 +33,4 @@ void solve(stack<int> &stack){
 void sortStack(stack<int> &stack)
 {
 	solve(stack);
-}
-
-int main(){
-    stack<int> stack;
-    stack.push(5);
-    stack.push(-2);
-    stack.push(9);
-    stack.push(-7);
-    stack.push(3);
-    sortStack(stack);
-
-    while(stack.size()){
-        cout << stack.top();
-        stack.pop();
-    }
 }
