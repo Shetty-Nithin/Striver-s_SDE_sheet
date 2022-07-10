@@ -1,10 +1,12 @@
+// Link : https://www.codingninjas.com/codestudio/problems/max-of-min_982935?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=0
 
 
 #include<iostream>
 #include<bits/stdc++.h>
-#include<algorithm>
-#include<climits>
+#include<string>
 using namespace std;
+
+// Brute Force : TLE
 
 int findMax(vector<int> &a, int n, int k){
     int maxi = INT_MIN;
@@ -33,9 +35,4 @@ vector<int> maxMinWindow(vector<int> a, int n) {
     }
     
     return maxOfMins;
-}
-
-int main(){
-    vector<int> a{2,1,1};
-    maxMinWindow(a, 3);
 }
