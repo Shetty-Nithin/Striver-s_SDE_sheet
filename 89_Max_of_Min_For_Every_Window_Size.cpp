@@ -36,3 +36,60 @@ vector<int> maxMinWindow(vector<int> a, int n) {
     
     return maxOfMins;
 }
+
+// Optimised
+
+vector<int> maxMinWindow(vector<int> a, int n) {
+    vector<int> next(n+1);
+    vector<int> prev(n+1);
+    stack<int> s;
+   
+    for(int i=0; i<n; i++){
+        next[i] = n;
+        prev[i] = -1;
+    }
+
+    for(int i=0; i<n; i++){
+        while(!s.empty() && a[s.top()] >= a[i]){
+            s.pop();
+        }
+
+        if(!s.empty()){
+            prev[i] = s.top();
+        }
+        s.push(i);
+    }
+
+    while(!s.empty()) s.pop();
+
+    for(int i=n-1; i>=0; i--){
+        while(!s.empty() && a[s.top()] >= a[i]){
+            s.pop();
+        }
+
+        if(!s.empty()){
+            next[i] = s.top();
+        }
+        s.push(i);
+    }
+    vector<int> ans(n+1);
+    for(int i=0; i<=n; i++){
+        ans[i] = INT_MIN;
+    }
+
+    for(int i=0; i<n; i++){
+        int len = next[i] - prev[i] - 1;
+        ans[len] = max(ans[len], a[i]);
+    }
+    
+    for(int i=n-1; i>=1; i--){
+        ans[i] = max(ans[i], ans[i+1]);
+    }
+    
+    vector<int> res(n);
+    for(int i=1; i<=n; i++){
+        res[i-1] = ans[i];
+    }
+    
+    return res;
+}

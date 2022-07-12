@@ -19,6 +19,7 @@
         "xstring": "cpp",
         "xtree": "cpp",
         "random": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "stack": "cpp"
     }
 }

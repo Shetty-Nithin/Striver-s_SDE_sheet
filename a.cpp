@@ -6,36 +6,21 @@
 #include<climits>
 using namespace std;
 
-int findMax(vector<int> &a, int n, int k){
-    int maxi = INT_MIN;
-    deque<int> mini;
+int romanToInt(string s) {
+    unordered_map<char, int> symbols{{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50}, 
+                                    {'C', 100}, {'D', 500}, {'M', 1000}};
     
-    for(int i=0; i<n; i++){
-        if(!mini.empty() && mini.front() == i-k){
-            mini.pop_front();
-        }
-        while(!mini.empty() && a[i] < a[mini.back()]){
-            mini.pop_back();
-        }
-        mini.push_back(i);
-        if(i >= k-1){
-            maxi = max(maxi, a[mini.front()]);            
-        }
-    }
-    return maxi;
-}
-
-vector<int> maxMinWindow(vector<int> a, int n) {
-    vector<int> maxOfMins;
-    for(int i=1; i<=n; i++){
-        int maxi = findMax(a, n, i);
-        maxOfMins.push_back(maxi);
+    int num = 0;
+    
+    for(int ch=0; ch<s.length(); ch++){
+        num += symbols[s[ch]];
     }
     
-    return maxOfMins;
+    return num;
 }
 
 int main(){
-    vector<int> a{2,1,1};
-    maxMinWindow(a, 3);
-}
+    
+    cout << romanToInt("III") << endl;
+    return 0;
+} 
