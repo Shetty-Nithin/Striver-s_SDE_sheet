@@ -7,38 +7,48 @@
 using namespace std;
 
 
-int repeatedStringMatch(string a, string b) {
+int zAlgorithm(string haystack, string needle, int h, int n)
+{     
+    string totalStr = needle + '$' + haystack;
+    int len = totalStr.length();
+    vector<int> z(len);
     
-    int count = 1;
-    string repeatedA = a;
-
-    int compareLen = 0;
-    int i = 0;
-    int j = 0;
-    while(j < b.length() && i < repeatedA.length()){
-        if(b[j] == repeatedA[i]){
-            compareLen++;
-            i++;
-            j++;
-            
-            if(repeatedA.length()-i < b.length()-j){
-                repeatedA = repeatedA + a;
-                count++;
+    z.push_back(0);
+    int l = 0;
+    int r = 0;
+    for(int k=1; k<len; k++){
+        if(k > r){
+            l=r=k;
+            while(r < len && totalStr[r] == totalStr[r-l]){
+                r++;
             }
-            
-        }else{
-            i = i-j+1;
-            j = 0;
-            compareLen = 0;
+            z[k] = r-l;
+            r--;
+        }
+        else{ // k < r
+            if((k+z[k-l]) <= r){
+                z[k] = z[k-l];
+            }
+            else{
+                l=k;
+                while(r < len && totalStr[r] == totalStr[r-l]){
+                    r++;
+                }
+                z[k] = r-l;
+                r--;
+            }
         }
     }
-
-    if(compareLen == b.length()){
-        return count;
+    
+    int occurence = 0;
+    for(int k=n; k<z.size(); k++){
+        if(z[k] == n){
+            occurence++;
+        }
     }
-    return -1;
+    return occurence;
 }
 
 int main(){
-   cout << repeatedStringMatch("abcabcabcabc", "abac");
+    cout << zAlgorithm("ababa", "ab", 5, 2);
 } 
