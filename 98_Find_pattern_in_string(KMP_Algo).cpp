@@ -28,7 +28,7 @@ void find_lps(string p, int m, vector<int> &lps){
     int prevLps = 0;
     for(int i=1; i<m; i++){
         if(p[i] == p[prevLps]){ // prefix == suffix of the current substring
-            //lps[i] means, in the substring lps[i] lengt of prefix == lps[i] of suffix
+            //lps[i] means, in the substring lps[i] length of prefix == lps[i] of suffix
             lps[i] = prevLps+1;
             prevLps++;
         }
