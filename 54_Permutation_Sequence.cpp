@@ -1,4 +1,5 @@
 // Link : https://leetcode.com/problems/permutation-sequence/
+// YouTube : https://www.youtube.com/watch?v=va3NEycUxsg&t=859s
 
 #include<iostream>
 #include<bits/stdc++.h>
@@ -7,7 +8,6 @@ using namespace std;
 // Brute Force : TLE
 class Solution {
 public: 
-
     void solve(string str, vector<string> &res, int index, int n){
         if(index == n){
             res.push_back(str);
@@ -31,7 +31,6 @@ public:
         solve(str, res, 0, n);  
         
         sort(res.begin(), res.end());
-        
         return res[k-1];
     }
 };
@@ -40,7 +39,6 @@ public:
 // Optimised approach :
 class Solution {
 public:   
-    
     string getPermutation(int n, int k) {
         int fact = 1;
         string str = "";

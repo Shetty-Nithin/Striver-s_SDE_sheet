@@ -2,10 +2,10 @@
 
 #include<iostream>
 #include<bits/stdc++.h>
+#include<algorithm>
 using namespace std;
 
-class Solution
-{ 
+class Solution{ 
     public:
     bool static comparator(pair<int, int> schedule_1, pair<int, int> schedule_2){
         if(schedule_1.second < schedule_2.second){
@@ -14,22 +14,21 @@ class Solution
         return false;
     } 
 
-    int maxMeetings(int s[], int e[], int n)
-    {
+    int maxMeetings(int s[], int e[], int n){
         vector<pair<int, int>> scheduleArr;
         
         for(int i=0; i<n; i++){
             scheduleArr.push_back({s[i], e[i]});
         }
         
-        sort(scheduleArr.begin(), scheduleArr.end(), comparator);
+        sort(scheduleArr.begin(), scheduleArr.end(), comparator); // sort : whichever finishes first will be at the begining
         
         int count = 0;
         int limit = scheduleArr[0].second;
         count++;
         
         for(int i=1; i<n; i++){
-            if(scheduleArr[i].first > limit){
+            if(scheduleArr[i].first > limit){ // if this meeting starts after the end of the previous meeting, then only we can consider.
                 limit = scheduleArr[i].second;
                 count++;
             }
@@ -40,10 +39,7 @@ class Solution
 };
 
 
-
 // approach 2 : From coding ninjas
-#include<algorithm>
-
 class MeetingDetails{
     public:
     int start;
@@ -56,7 +52,7 @@ bool comparator(MeetingDetails schedule_1, MeetingDetails schedule_2){
         return true;
     }else if(schedule_1.end > schedule_2.end){
         return false;
-    }else if(schedule_1.pos < schedule_2.pos){
+    }else if(schedule_1.pos < schedule_2.pos){ // if schedule_1.end == schedule_2.end, then go with pos (priority)
         return true;
     }
     return false;

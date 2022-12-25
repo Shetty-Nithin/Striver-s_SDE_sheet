@@ -5,11 +5,32 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// approach 1:
+// approach 0: TLE
 class Solution {
 public:
     double myPow(double x, int n) {
-        
+        double ans = 1;
+        if(n == 0) return 1;
+        if(n > 0){
+            while(n){
+                ans *= x;
+                n--;
+            }
+        }else{
+            while(n){
+                ans /= x;
+                n++;
+            }
+        }
+
+        return ans;
+    }
+};
+
+// approach 1:
+class Solution {
+public:
+    double myPow(double x, int n) {  
         int nn = n;
         if(nn < 0){
             nn = -1 * n;
@@ -58,12 +79,10 @@ public:
 
 // code studio problem:
 int modularExponentiation(int x, int n, int m) {
-    
     long long ans = 1;
     long long xx = x;
 
     while(n){
-
         xx = xx%m;
         
         if(n%2 == 0){
@@ -76,3 +95,4 @@ int modularExponentiation(int x, int n, int m) {
     }  
     return (int)(ans%m);
 }
+

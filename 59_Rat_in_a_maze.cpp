@@ -11,7 +11,7 @@ class Solution{
     void solve(int row, int col, vector<vector<int>> &m, int n, string path, 
                 vector<string> &ans, vector<vector<int>> &visited){
         
-        if(row == n-1 && col == n-1){
+        if(row == n-1 && col == n-1){ // reached the end
             ans.push_back(path);
             return;
         }       

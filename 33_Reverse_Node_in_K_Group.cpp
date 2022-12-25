@@ -1,6 +1,5 @@
 // Link : https://leetcode.com/problems/reverse-nodes-in-k-group/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 #include<unordered_set>
@@ -14,7 +13,6 @@ struct ListNode {
 
 class Solution {
 public:
-
     int getLen(ListNode* head){
         int count = 0;
         while(head){
@@ -24,14 +22,14 @@ public:
         
         return count;
     }
-    ListNode* reverseK(ListNode* head, int k, int len) {
-        
+
+    ListNode* reverseK(ListNode* head, int k, int len) { 
         ListNode* prev = NULL;
         ListNode* curr = head;
         ListNode* nextNode = head;
         int count = 0;
         
-        while(count != k){
+        while(count != k){ // 0, 1, 2, 3 = 4 nodes
             if(curr == NULL){
                 return head;
             }
@@ -48,7 +46,7 @@ public:
         if(len >= k){
             head->next = reverseK(curr, k, len);
         }
-        else{
+        else{ // if reamining are < k, then keep them as it is.
             head->next = curr;
         }
         

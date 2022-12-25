@@ -1,6 +1,5 @@
 // Link : https://leetcode.com/problems/n-queens/submissions/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -17,7 +16,7 @@ class Solution {
         int x = row;
         int y = col;
         
-        while (x >= 0 && y >= 0) {
+        while (x >= 0 && y >= 0) { // diagonally left-top
             if (board[x][y] == 'Q')
               return false;
             x--;
@@ -27,19 +26,21 @@ class Solution {
         x = row;
         y = col;
         while (x >= 0) {
-            if (board[x][y] == 'Q')
+            if (board[x][y] == 'Q') // vertically up
               return false;
             x--;
         }
 
         x = row;
         y = col;
-        while (x >= 0 && y < n) {
+        while (x >= 0 && y < n) { // diagonally right-up
             if (board[x][y] == 'Q')
               return false;
             x--;
             y++;
         }
+        // below the board[row][col] is not required since its not filled yet.
+
         return true;
     }
     
@@ -49,6 +50,7 @@ class Solution {
             return;
         }
         
+        //DFS 
         for(int col=0; col<n; col++){
             if(isSafe(col, row, n, board)){
                 board[row][col] = 'Q';
@@ -61,7 +63,7 @@ class Solution {
     public:
     vector<vector<string>> solveNQueens(int n) {
         vector<vector<string>> ans;
-        vector < string > board(n);
+        vector<string> board(n);
         string s(n, '.');
         
         for (int i=0; i<n; i++) {

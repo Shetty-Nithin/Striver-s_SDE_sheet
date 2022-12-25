@@ -1,6 +1,4 @@
 // Link : https://practice.geeksforgeeks.org/problems/largest-subarray-with-0-sum/1#
-// Link : 
-
 
 #include<iostream>
 #include<bits/stdc++.h>
@@ -8,15 +6,12 @@ using namespace std;
 
 class Solution{
     public:
-    int maxLen(vector<int>&A, int n)
-    {   
-
+    int maxLen(vector<int>&A, int n){   
         unordered_map<int, int> u_map;
         int maxi = 0;
         int sum = 0;
         
-        for(int i=0; i<A.size(); i++){
-            
+        for(int i=0; i<A.size(); i++){      
             sum += A[i];
             if(sum == 0){
                 maxi = i+1;

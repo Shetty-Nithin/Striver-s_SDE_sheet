@@ -8,8 +8,8 @@ vector<int> repeatedNumber(const vector<int> &A) {
     
     long long int len = A.size();
 
-    long long int S = (len * (len+1) ) /2;
-    long long int P = (len * (len +1) *(2*len +1) )/6;
+    long long int S = (len * (len+1) ) /2;   // n*(n+1)/2 ---> sum of n numbers  ---> 1 + 2 + 3  + ... 
+    long long int P = (len * (len +1) *(2*len +1) )/6;  // (n*(n+1) * (2n+1))  ---> sum of n square numbers => 1^2 + 2^2 + 3^2 + ...
     long long int missingNumber=0, repeating=0;
      
     for(int i=0;i<A.size(); i++){

@@ -8,7 +8,7 @@ using namespace std;
 bool static comparator(pair<int, int> act1, pair<int, int> act2){
     if(act1.second < act2.second) return true;
     else if(act1.second > act2.second) return false;
-    else if(act1.first < act2.first) return true;
+    else if(act1.first < act2.first) return true; // both finish times are same, so judging based on the start time
     else return false;
 }
 
@@ -17,7 +17,6 @@ int maximumActivities(vector<int> &start, vector<int> &finish) {
     for(int i=0; i<start.size(); i++){
         activities.push_back({start[i], finish[i]});
     }
-    
     sort(activities.begin(), activities.end(), comparator);
     
     int maxActivities = 1;

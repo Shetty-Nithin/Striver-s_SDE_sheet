@@ -1,6 +1,5 @@
 // Link : https://practice.geeksforgeeks.org/problems/flattening-a-linked-list/1#
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -41,12 +40,19 @@ Node* mergeSort(Node* root, Node* nextRoot){
         temp->bottom = nextRoot;
     }
     
-    return res->bottom;
+    return res->bottom; 
+    /*
+                 temp(-1) --> next
+                   |
+                   |
+    return res = bottom
+    
+    */
 }
 
 Node *flatten(Node *root)
 {
-    if(root == NULL || root->next == NULL){
+    if(root == NULL || root->next == NULL){ // Bottom will be ascending order
         return root;
     }
     

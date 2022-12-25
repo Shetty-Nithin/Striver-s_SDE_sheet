@@ -35,14 +35,13 @@ public:
     }
     
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        
         ListNode* newHead = reverseLL(head); 
         ListNode* rmv = NULL;
         
         if(n == 1){
             rmv = newHead;
-            newHead = newHead->next;
-            rmv->next = NULL;
+            newHead = newHead->next; // assigning NULL to newHead
+            rmv->next = NULL; // removeing the node by assiging NULL
         }else{
             ListNode* curr = newHead;
             ListNode* prev = NULL;
@@ -64,9 +63,9 @@ public:
 // optimal approach 
 class Solution {
 public:
-    
     ListNode* removeNthFromEnd(ListNode* head, int n) {
-        
+        // by maintaining the "n" nodes of difference between slow and fast pointers.
+        // As soon as fast reaches the end slow will be at nth position from the end (slow = fast-n)
         ListNode* start = new ListNode();
         start->next = head; 
         ListNode* slow = start;

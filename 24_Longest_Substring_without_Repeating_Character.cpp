@@ -1,5 +1,4 @@
-// Link : 
-
+// Link : https://leetcode.com/problems/longest-substring-without-repeating-characters/
 
 #include<iostream>
 #include<bits/stdc++.h>
@@ -30,3 +29,32 @@ public:
         return len;
     }
 };
+
+/*
+string = abcabcbb
+U_map:  number      index       len      tempLen
+        a           0                       1
+        b           1                       2
+        c           2                       3
+        a                    max(0, 3)      0
+
+        b           1                       1
+        c           2                       2
+        a           3                       3
+        b                    max(3, 3)      0
+
+        c           2                       1
+        a           3                       1
+        b           4                       3
+        c                    max(3, 3)      0
+
+        a           3                       1
+        b           4                       2
+        c           5                       3
+        b                    max(3, 3)      0 
+
+        c           5                       1
+        b           6                       2
+        b                    max(3, 2)      0
+
+*/

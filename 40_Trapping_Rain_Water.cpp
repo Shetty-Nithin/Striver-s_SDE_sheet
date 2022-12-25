@@ -1,28 +1,27 @@
 // Link : https://leetcode.com/problems/trapping-rain-water/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
 
 class Solution {
 public:
-    int trap(vector<int>& height) {
-        
+    int trap(vector<int>& height) { 
         int n = height.size();
         int waterTrapped = 0;
 
-        for(int i=0; i<n; i++){
-            
+        for(int i=0; i<n; i++){    
             int leftMax = 0;
             int rightMax = 0;
             
+            // leftMax
             int j=i;
             while(j >= 0){
                 leftMax = max(leftMax, height[j]);
                 j--;
             }
             
+            // rightMax
             j=i;
             while(j < n){
                 rightMax = max(rightMax, height[j]);
@@ -41,7 +40,6 @@ public:
 class Solution {
 public:
     int trap(vector<int>& height) {
-        
         int n = height.size();
         int waterTrapped = 0;
         int leftMax[5]; //     int leftMax[n];
@@ -69,7 +67,6 @@ public:
 class Solution {
 public:
     int trap(vector<int>& height) {
-        
         int n = height.size();
         int waterTrapped = 0;
         int leftMax = 0;
@@ -80,9 +77,9 @@ public:
         
         while(leftPointer <= rightPointer){
             if(height[leftPointer] <= height[rightPointer]){
-                if(height[leftPointer] >= leftMax){
+                if(height[leftPointer] >= leftMax){ // if yes, we got new higher wall. So we can udpate the wall to trap more water
                     leftMax = height[leftPointer];
-                }else{
+                }else{ // since leftMax is > current height, left boundary is available, hence water can be trapped.
                     waterTrapped += leftMax - height[leftPointer];
                 }
                 leftPointer++;

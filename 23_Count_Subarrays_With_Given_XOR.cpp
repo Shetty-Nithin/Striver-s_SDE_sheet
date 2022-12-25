@@ -1,7 +1,6 @@
 // Link : https://www.codingninjas.com/codestudio/problems/1115652?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=0
 // Link : https://www.interviewbit.com/problems/subarray-with-given-xor/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -31,18 +30,16 @@ int subarraysXor(vector<int> &A, int x)
     unordered_map<int, int> visited;
     
     int xorSum = 0;
-    for(int i=0; i<A.size(); i++){
-        
+    for(int i=0; i<A.size(); i++){ 
         xorSum ^= A[i];
         if(xorSum == x){
             subArrays++;
         }
+
         int q = xorSum ^ x;
-        
         if(visited.find(q) != visited.end()){
             subArrays += visited[q];
         }
-        
         visited[xorSum]++;
     }
     

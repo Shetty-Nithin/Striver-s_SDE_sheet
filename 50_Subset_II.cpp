@@ -1,13 +1,11 @@
 // Link : https://leetcode.com/problems/subsets-ii/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
 
 class Solution {
 public:
-    
     void solve(vector<int> &nums, set<vector<int>> &s, int index, vector<int> temp){
         if(index == nums.size()){
             sort(temp.begin(), temp.end());
@@ -35,7 +33,7 @@ public:
         solve(nums, s, 0, temp);
         
         vector<vector<int>> ans;
-        for (auto v = s.begin(); v != s.end(); v++) {
+        for (auto v = s.begin(); v != s.end(); v++) { // syntax
           ans.push_back( * v);
         }
         
@@ -47,7 +45,6 @@ public:
 // Approach 2 : optimal approach
 class Solution {
 public:
-    
     void solve(vector<int> &nums, vector<vector<int>> &ans, int index, vector<int> &temp){
         ans.push_back(temp);
         
@@ -62,7 +59,6 @@ public:
     }
     
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-
         sort(nums.begin(), nums.end());
 
         vector<vector<int>> ans;

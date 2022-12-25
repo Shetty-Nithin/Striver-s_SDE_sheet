@@ -1,5 +1,5 @@
 // Link : https://leetcode.com/problems/permutations/submissions/
-
+// YouTube : https://www.youtube.com/watch?v=va3NEycUxsg&t=859s
 
 #include<iostream>
 #include<bits/stdc++.h>
@@ -24,7 +24,6 @@ public:
     vector<vector<int>> permute(vector<int>& nums) {
         vector<vector<int>> ans;
         solve(nums, ans, 0);
-        
         return ans;
     }
 };

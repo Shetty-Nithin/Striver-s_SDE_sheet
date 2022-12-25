@@ -19,7 +19,8 @@ void solve(ListNode* list1, ListNode* list2){
     ListNode* curr_2 = list2;
     ListNode* next_2 = list2->next;
     
-    while(next_1 && curr_2){
+    while(next_1 && curr_2){ // if next_1 is NULL, append the rest of the list_2 (line 37).
+                             // if curr_2 is NULL, stop the process and return.
         if(curr_1->val <= curr_2->val && next_1->val >= curr_2->val){
             curr_1->next = curr_2;
             next_2 = curr_2->next;

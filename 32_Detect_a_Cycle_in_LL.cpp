@@ -11,11 +11,8 @@ struct ListNode {
     ListNode *next;
     ListNode(int x) : val(x), next(NULL) {}
 };
-
-
 // can use the hashing instead of 2 pointer. 
-
-// slow-fast algorithm
+// slow-fast algorithm (hare-tortoise algorithm)
 class Solution {
 public:
     bool hasCycle(ListNode *head) {

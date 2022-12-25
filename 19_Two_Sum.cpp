@@ -10,7 +10,6 @@ using namespace std;
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
-        
         int n = nums.size()-1;
                 
         int i, j;
@@ -37,7 +36,6 @@ public:
         
         int n = nums.size();
         vector<int> res;
-        
         int left = 0;
         int right = n-1;
         int sum, num1, num2;
@@ -46,7 +44,7 @@ public:
             if(sum == target){
                 num1 = sortedArr[left];
                 num2 = sortedArr[right];
-                break;
+                // break;
             }
             else if(sum < target){
                 left++;
@@ -56,6 +54,7 @@ public:
             }
         }
         
+        // to get the indeces
         bool flag1 = false;
         bool flag2 = false;
         for(int i=0; i<n; i++){
@@ -99,7 +98,7 @@ public:
     }  
 };
 
-// codingg ninja (slightly different problem)
+// coding ninja (slightly different problem)
 #include <bits/stdc++.h> 
 vector<vector<int>> pairSum(vector<int> &nums, int target){
     

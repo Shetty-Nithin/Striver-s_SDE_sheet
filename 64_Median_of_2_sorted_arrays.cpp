@@ -6,7 +6,6 @@
 using namespace std;
 
 //Brute Force
-
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
@@ -39,7 +38,7 @@ private:
         int n2 = 0;
         int n3 = 0;
         
-        while(n > 0 && n1 < nums1.size() && n2 < nums2.size()){
+        while(n > 0 && n1 < nums1.size() && n2 < nums2.size()){ // first condition (n>0): Is only to store the "n" elements.
             if(nums1[n1] < nums2[n2]){
                 nums[n3] = nums1[n1];
                 n1++;
@@ -50,7 +49,6 @@ private:
             n3++;
             n--;
         }
-
         while(n > 0 && n1 < nums1.size()){
             nums[n3] = nums1[n1];
             n1++;
@@ -58,7 +56,6 @@ private:
             n3++;
             n--;
         }
-
         while(n > 0 && n2 < nums2.size()){
             nums[n3] = nums2[n2];
             n2++;
@@ -70,10 +67,9 @@ private:
     
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
-        
         int n1 = nums1.size();
         int n2 = nums2.size();
-        int n = (n1+n2)/2 +1;
+        int n = (n1+n2)/2 +1; // size is not n1+n2
         
         vector<int> nums(n);
         merge(nums1, nums2, nums, n);

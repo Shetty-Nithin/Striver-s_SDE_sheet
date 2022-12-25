@@ -1,11 +1,9 @@
 // Link : https://leetcode.com/problems/sudoku-solver/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 #include<string>
 using namespace std;
-
 
 class Solution {
 private: 
@@ -24,7 +22,6 @@ private:
                 if(board[j][i] == '0'+num) return false;
             }
         } 
-        
         return true;
     }
     
@@ -37,10 +34,9 @@ public:
                         if(isSafe(row, col, num, board)){
                             board[row][col] = '0'+num;
                             if(solve(board)){
-                                return true;
-                              }else{
-                                board[row][col] = '.';
-                             }
+                                return true;  // when all the slots are filled, it will be returned true by line 48
+                            }
+                            board[row][col] = '.';
                         }
                     }
                     return false;
@@ -70,4 +66,12 @@ int main() {
 
     Solution s;
     s.solveSudoku(board);
+
+    // Print
+    for(auto row : board){
+        for(auto n : row){
+            cout << n << ", ";
+        }
+        cout << endl;
+    }
 }

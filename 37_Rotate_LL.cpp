@@ -1,6 +1,5 @@
 // Link : https://leetcode.com/problems/rotate-list/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -31,7 +30,6 @@ public:
     }
     
     ListNode* rotateRight(ListNode* head, int k) {
-        
         if(head == NULL){
             return head;
         }
@@ -45,7 +43,7 @@ public:
         }
         
         while(k){
-            fast = fast->next;
+            fast = fast->next; // to maintain the "k" diff between slow and fast
             k--;
         }
         
@@ -53,10 +51,10 @@ public:
             slow = slow->next;
             fast = fast->next;
         }
-        fast->next = head;
+        fast->next = head; // joining the tail to the head
         
-        ListNode* newHead = slow->next;
-        slow->next = NULL;
+        ListNode* newHead = slow->next; // making the k+1 th element as a new head.
+        slow->next = NULL; // creating the new tail
         
         return newHead;
     }

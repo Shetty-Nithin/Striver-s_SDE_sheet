@@ -15,12 +15,11 @@ struct ListNode {
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        
         ListNode* h1 = headA;
         ListNode* h2 = headB;
         
         while(h2){
-            h1 = headA;
+            // h1 = headA;
             while(h1){
                 if(h1 == h2){
                     return h1;
@@ -34,13 +33,10 @@ public:
     }
 };
 
-
-
 // Using set
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        
         unordered_set<ListNode*> s;
         
         while(headA){
@@ -58,8 +54,6 @@ public:
         return NULL;
     }
 };
-
-
 
 // optimal solution
 class Solution {
@@ -83,7 +77,6 @@ public:
     }
     
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        
         int diff = getDiff(headA, headB);
         
         if(diff < 0){
@@ -98,7 +91,7 @@ public:
             }
         }
         
-        while(headA){
+        while(headA){ // headB
             if(headA == headB){
                 return headA;
             }
@@ -114,13 +107,11 @@ public:
 // optimal solution
 class Solution {
 public:
-    
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
-        
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) { 
         ListNode* hA = headA;
         ListNode* hB = headB;
 
-        while(hA != hB) {
+        while(hA != hB) { // based on A+B = B+A
             hA = (hA == NULL) ? headB : hA->next;
             hB = (hB == NULL) ? headA : hB->next;
         }

@@ -15,8 +15,7 @@ struct ListNode {
 
 class Solution {
 public:
-    ListNode* middleNode(ListNode* head) {
-        
+    ListNode* middleNode(ListNode* head) { 
         if(head == NULL || head->next == NULL){
             return head;
         }

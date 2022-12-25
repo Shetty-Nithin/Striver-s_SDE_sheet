@@ -15,16 +15,17 @@ public:
                 break;
             }
         }
-        if(i < 0){
-            reverse(nums.begin(), nums.end());
-        }else{
+        
+        if(i < 0){ // 5, 4, 3, 2, 1
+            reverse(nums.begin(), nums.end()); // 1, 2, 3, 4, 5
+        }else{ // 5, 4, 1, 2, 3   |   5, 3, 4, 2, 1
             for(j=n-1; j>i; j--){
                 if(nums[j] > nums[i]){
                     break;
                 }
             }
-            swap(nums[i], nums[j]);
-            reverse(nums.begin()+i+1, nums.end());
+            swap(nums[i], nums[j]); // 5, 4, 1, 3, 2  |   5, 4, 3, 2, 1
+            reverse(nums.begin()+i+1, nums.end()); // 5, 4, 1, 3, 2 | 5, 4, 1, 2, 3
         }
     }
 };

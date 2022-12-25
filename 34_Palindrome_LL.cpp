@@ -31,7 +31,6 @@ public:
     }
     
     bool isPalindrome(ListNode* head) {
-        
         ListNode* slow = head;
         ListNode* fast = head->next;
         
@@ -60,9 +59,7 @@ public:
 };
 
 
-
 // coding ninja
-
 template <typename T>
 class LinkedListNode
 {
@@ -93,7 +90,6 @@ LinkedListNode<int>* reverseLL(LinkedListNode<int>* head){
 }
 
 bool isPalindrome(LinkedListNode<int>* head) {
-
     if(head == NULL){
         return true;
     }

@@ -1,16 +1,11 @@
 // Link : https://leetcode.com/problems/4sum/submissions/
-// Link : 
-
-
 
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
 
-
 class Solution {
 public:
-    
     vector<vector<int>> twoSum(vector<int>& nums, int target, int start){
         vector<vector<int>> res;
         int left = start;
@@ -41,20 +36,18 @@ public:
         if(start == nums.size()){
             return res;
         }
-        
         int avg_value = target/k;
-        
-        if(nums[start] > avg_value || avg_value > nums.back()){
-            return res;
+        if(nums[start] > avg_value || avg_value > nums.back()){ // if 1st value of the sorted array is > target(avg value) or last value of
+            return res;                                         // the sorted array is < target(avg value), then it will not possible. Hence return empty array.
         }
-        
         if(k == 2){
             return twoSum(nums, target, start);
         }
         
         for(int i=start; i<nums.size(); i++){
-            if(i == start || nums[i-1] != nums[i]){
-                for(vector<int>& subset : kSum(nums, static_cast<long>(target)-nums[i], i+1, k-1)){
+            if(i == start || nums[i-1] != nums[i]){ // unique quadruplets
+                // for(vector<int>& subset : kSum(nums, static_cast<long>(target)-nums[i], i+1, k-1)){
+                for(vector<int>& subset : kSum(nums, target-nums[i], i+1, k-1)){
                     res.push_back({nums[i]});
                     res.back().insert(end(res.back()), begin(subset), end(subset));
                 }
@@ -66,6 +59,6 @@ public:
     
     vector<vector<int>> fourSum(vector<int>& nums, int target) {
         sort(nums.begin(),nums.end());
-        return kSum(nums, target, 0, 4);
+        return kSum(nums, target, 0, 4); //k=4
     }
 };

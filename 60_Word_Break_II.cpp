@@ -1,6 +1,5 @@
 // Link : https://www.codingninjas.com/codestudio/problems/983635?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=0
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 #include<string>
@@ -28,14 +27,13 @@ void solve(string &s, vector<string> &dictionary, vector<string> &collection, in
         if(isValid(temp, dictionary)){
             string backup = sentence;
             sentence += temp + " ";
-            solve(s, dictionary, collection, i+1, sentence);
+            solve(s, dictionary, collection, i+1, sentence); // i+1 nor index+1
             sentence = backup;
         }
     }
 }
 
-vector<string> wordBreak(string &s, vector<string> &dictionary)
-{
+vector<string> wordBreak(string &s, vector<string> &dictionary){
     vector<string> collection;
     string sentence;
     solve(s, dictionary, collection, 0, sentence);

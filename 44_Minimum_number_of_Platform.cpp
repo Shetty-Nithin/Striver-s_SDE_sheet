@@ -1,12 +1,10 @@
-// Link : 
-
+// Link : https://www.codingninjas.com/codestudio/problems/minimum-number-of-platforms_799400   
 
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
 
-// Brute Force Approach:
- 
+// Brute Force Approach: TLE
 bool static comparator(pair<int, int> n1, pair<int, int> n2){
     if(n1.second < n2.second){
         return true;

@@ -5,39 +5,36 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
 template <typename T>
-class LinkedListNode
-{
+
+class LinkedListNode{
 public:
     T data;
     LinkedListNode<T> *next;
-    LinkedListNode(T data)
-    {
+
+    LinkedListNode(T data){
         this->data = data;
         this->next = NULL;
     }
 };
 
-LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) 
-{  
+LinkedListNode<int> *reverseLinkedList(LinkedListNode<int> *head) {  
         LinkedListNode<int>* prevNode = NULL;
         LinkedListNode<int>* currNode = head;
         LinkedListNode<int>* nextNode = head;
         
         while(nextNode){
+            nextNode = currNode->next; // saving the link to the original list
+            currNode->next = prevNode; // changin the direction of next
+
+            prevNode = currNode; // updating the prevNod and currNode for next iteration
             currNode = nextNode;
-            nextNode = nextNode->next;
-            
-            currNode->next = prevNode;
-            prevNode = currNode;
         }
-        
+
         return prevNode;
 }
 
 // approach 2: Recurrsion
-
 struct ListNode {
     int val;
     ListNode *next;
@@ -46,19 +43,17 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
-        
-        if(head == NULL || head->next == NULL){
+    ListNode* reverseList(ListNode* head) { 
+        if(head == NULL || head->next == NULL){ // base case: smallest valid test case
             return head;
         }
         
-        
-        ListNode* newHead = reverseList(head->next);
-        head->next->next = head;
-        head->next = NULL;
+        ListNode* newHead = reverseList(head->next); // cannot use head beacuse, cannot track the previous of head. Thats why sending
+                                                     // head->next, so that we can track the previous of head i.e., head
+        head->next->next = head;  // changing the direction.
+        head->next = NULL; // use full for the last element of the new list (i.e., firs element of the given list)
         
         return newHead;
     }

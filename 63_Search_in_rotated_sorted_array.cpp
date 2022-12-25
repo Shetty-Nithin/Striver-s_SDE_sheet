@@ -14,15 +14,14 @@ public:
                 return i;
             }
         }
-        
         return -1;
     }
 };
+
 // Another not working solution
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
-        
+    int search(vector<int>& nums, int target) {   
         int k = 0;
         for(int i=0; i<nums.size()-1; i++){
             if(nums[i] < nums[i+1]){
@@ -55,27 +54,25 @@ public:
 // Optimal Approach
 class Solution {
 public:
-    int search(vector<int>& nums, int target) {
-        
+    int search(vector<int>& nums, int target) { 
         int left = 0;
         int right = nums.size()-1;
         int mid;
         
         while(left <= right){
             mid = left + (right-left)/2;
-            
             if(nums[mid] == target) return mid;
             if(nums[left] <= nums[mid]){
                 if(nums[left] <= target && nums[mid] >= target){
                     right = mid-1;
                 }else{
-                    left = mid+1;
+                    left = mid+1; // Note 1
                 }   
             }else{
                 if(nums[mid] <= target && nums[right] >= target){
                     left = mid+1;
                 }else{
-                    right = mid-1;
+                    right = mid-1; // Note 2
                 }
             }
         }
@@ -83,3 +80,21 @@ public:
         return -1;
     }
 };
+
+/*
+case 1:
+               /
+              /         ---> mid can be present in this. Hence "if(nums[left] <= nums[mid])"
+             /  
+            /   .
+                  /
+                 /      ---> else condition
+
+case 2: 
+               /
+              /
+             /
+            /           ---> Note 1 and Note 2
+           /
+          /
+*/

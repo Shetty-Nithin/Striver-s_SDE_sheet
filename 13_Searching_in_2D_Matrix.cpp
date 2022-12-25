@@ -7,11 +7,8 @@ using namespace std;
 // approach 1:
 class Solution {
 public:
-    
-    bool isPresent(vector<int>& matrix, int target, int start, int end){
-        
-        while(start <= end){
-            
+    bool isPresent(vector<int>& matrix, int target, int start, int end){ 
+        while(start <= end){  
             int mid = (end-start)/2 + start;
             
             if(matrix[mid] == target){
@@ -29,7 +26,6 @@ public:
     }
     
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
-        
         int rows = matrix.size();
         int cols = matrix[0].size();
         
@@ -56,7 +52,6 @@ public:
         int mid = start + (end - start)/2;
         
         while(start <= end){
-            
             int midNum = matrix[mid/col][mid%col];
             
             if(midNum == target) return true;

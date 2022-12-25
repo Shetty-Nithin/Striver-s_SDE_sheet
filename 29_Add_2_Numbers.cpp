@@ -14,23 +14,18 @@ struct ListNode {
 
 class Solution {
 public:
-    
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        
         ListNode* head1 = l1;
         ListNode* head2 = l2;
-        
         ListNode* ansHead = new ListNode(-1);
         ListNode* ansTail = ansHead;
         
         int sum = 0;
         int carry = 0;
-        
         int num1 = 0;
         int num2 = 0;
         int tempSum = 0;
         while(head1 || head2 || carry){
-            
             if(head1){
                 num1 = head1->val;
                 head1 = head1->next;

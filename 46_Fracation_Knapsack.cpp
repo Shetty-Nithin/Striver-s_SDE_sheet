@@ -12,8 +12,7 @@ bool static comparator(pair<int, int> p1, pair<int, int> p2){
     return v1 > v2;
 }
 
-double maximumValue (vector<pair<int, int>>& items, int n, int w)
-{
+double maximumValue (vector<pair<int, int>>& items, int n, int w){
     sort(items.begin(), items.end(), comparator);
     
     double maxValue = 0.0;
@@ -22,7 +21,7 @@ double maximumValue (vector<pair<int, int>>& items, int n, int w)
             w -= items[i].first;
             maxValue += items[i].second;
         }else{
-            maxValue += (items[i].second/ (double)(items[i].first))*(double)w;
+            maxValue += (items[i].second/ (double)(items[i].first))*(double)w; // adding the fraction of an item[i], as per the reamining capacity left.
             break;
         }       
     }

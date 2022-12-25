@@ -1,6 +1,5 @@
 // Link : https://leetcode.com/problems/max-consecutive-ones/submissions/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -19,7 +18,7 @@ public:
                 tempCount = 0;
             }
         }
-        maxCount = max(maxCount, tempCount);
+        maxCount = max(maxCount, tempCount); // do not forget this line. I usually forget this line.
         return maxCount;
     }
 };

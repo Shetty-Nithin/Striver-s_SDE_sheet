@@ -1,30 +1,24 @@
 // Link : https://leetcode.com/problems/unique-paths/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
 
-
 // TLE
 class Solution {
 public:
-    
     void totalPaths(int m, int n, int i, int j, int &count){
         if(i==m-1 && j==n-1){
             count++;
             return;
         }
-        
         if(i <= m-1)
             totalPaths(m, n, i+1, j, count);
         if(j <= n-1)
             totalPaths(m, n, i, j+1, count);
     }
     
-    
     int uniquePaths(int m, int n) {
-        
         int count = 0;
         totalPaths(m, n, 0, 0, count);
         
@@ -33,6 +27,7 @@ public:
 };
 
 
+// Approach 2: TLE
 class Solution {
 public:
     int totalPaths(int m, int n, int i, int j){
@@ -46,7 +41,6 @@ public:
         return totalPaths(m, n, i+1, j) + totalPaths(m, n, i, j+1);
     }
     
-    
     int uniquePaths(int m, int n) {  
         return totalPaths(m, n, 0, 0);
     }
@@ -55,9 +49,7 @@ public:
 // using DP
 class Solution {
 public:
-    
     int totalPaths(int m, int n, int i, int j, vector<vector<int>> &dp){
-        
         if(i == m-1 && j == n-1){
             return 1;
         }
@@ -72,10 +64,8 @@ public:
         return dp[i][j];
     }
     
-    
     int uniquePaths(int m, int n) {
-        
-        vector<vector<int>> dp(m+1, vector<int>(n+1, -1));
+        vector<vector<int>> dp(m, vector<int>(n, -1));
         int toalPaths = totalPaths(m, n, 0, 0, dp);
         
         return toalPaths;
@@ -83,20 +73,24 @@ public:
 };
 
 // approach 3: Combinatorics solution
+/*
+Any such path is a permutation of 6 R and 2 D, so the answer is
+|__|__|__|__|__|__|
+|  |  |  |  |  |  |
+
+(6    (8
+22) =  2) = 8×7/2 = 28
+*/
 class Solution {
 public:
-    
     int uniquePaths(int m, int n) {
-        
         int N = m+n-2;
         int R = m-1;
         double res = 1;
         
-        
         for(int i=1; i<=R; i++){
            res = res*(N-R+i)/i; 
         }
-        
         return (int)res;
     }
 };

@@ -1,6 +1,5 @@
 // Link : https://leetcode.com/problems/copy-list-with-random-pointer/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -31,8 +30,7 @@ public:
         }
     }
     
-    Node* copyRandomList(Node* head) {
-        
+    Node* copyRandomList(Node* head) {    
         Node* temp = head;
         Node* cloneHead = NULL;
         Node* cloneTail = NULL;
@@ -41,7 +39,6 @@ public:
             insertNode(cloneHead, cloneTail, temp->val);
             temp = temp->next;
         }
-        
         
         unordered_map<Node*, Node*> m;
         Node* originalNode = head;

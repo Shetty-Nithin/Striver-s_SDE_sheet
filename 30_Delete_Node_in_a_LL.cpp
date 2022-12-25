@@ -1,6 +1,5 @@
 // Link : https://leetcode.com/problems/delete-node-in-a-linked-list/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 using namespace std;
@@ -16,15 +15,14 @@ struct ListNode {
 class Solution {
 public:
     void deleteNode(ListNode* node) {
-        
         ListNode* prev = node;
-        while(node->next != NULL){
-            node->val = node->next->val;
-            prev = node;
+        while(node->next != NULL){ 
+            node->val = node->next->val; // assigning the next node value to the current node value from the node to be deleted.
+            prev = node; // storing the previous to assign NULL at the end
             node = node->next;
         }
         
-        prev->next = NULL;
+        prev->next = NULL; // removing the last node.
     }
 };
 
@@ -33,8 +31,8 @@ class Solution {
 public:
     void deleteNode(ListNode* node) {
         node->val = node->next->val;
-        ListNode* dltNode = node->next;
+        ListNode* dltNode = node->next; // this line is optional
         node->next = node->next->next;
-        dltNode->next = NULL;    
+        dltNode->next = NULL;  // this line is optional
     }
 };

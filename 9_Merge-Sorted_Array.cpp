@@ -5,14 +5,11 @@
 using namespace std;
 
 void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
-    
-    int k=0;
-    int start = 0;
-    for(int i=0; i<n; i++){
+    int k=0; // first element of nums2
+    for(int i=0; i<n; i++){ // run through all the elements of the nums2
         int currNums1 = m+i-1;
-        for(int j=start; j<=currNums1; j++){
+        for(int j=i; j<=currNums1; j++){ // starts from i because, 0 to i-1 are already merged into nums1 array.
             if(nums1[j] <= nums2[k]){
-                start++;
                 continue;
             }else{
                 swap(nums1[j], nums2[k]);
@@ -20,7 +17,7 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
         }
         currNums1++;
         nums1[currNums1] = nums2[k];
-        k++;
+        k++; // next element of nums2 for comparision
     }
 }
 

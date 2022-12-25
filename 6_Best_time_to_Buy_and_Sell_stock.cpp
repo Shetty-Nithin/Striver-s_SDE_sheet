@@ -21,7 +21,7 @@ public:
                 tempProfit = prices[sell] - prices[buy];
                 profit = max(profit, tempProfit);
             }
-            sell++;
+            sell++; // sell = i
         }
         
         return profit;
@@ -29,8 +29,7 @@ public:
 };
 
 
-// approach 2:
-
+// Approach 2:
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
@@ -42,6 +41,24 @@ public:
             profit = max(profit, prices[i]-boughtAt);
         }
         
+        return profit;
+    }
+};
+
+// Approach 3 : 
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int mini = prices[0];
+        int profit = 0;
+        int n = prices.size();
+
+        for(int i=1; i<n; i++){
+            int diff = prices[i]-mini;
+            profit = max(profit, diff);
+            mini = min(mini, prices[i]);
+        }
+
         return profit;
     }
 };
