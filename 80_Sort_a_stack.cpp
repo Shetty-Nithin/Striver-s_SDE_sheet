@@ -1,5 +1,4 @@
-// Link : https://www.codingninjas.com/codestudio/problems/sort-a-stack_985275?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
-
+// Link : https://www.codingninjas.com/codestudio/problems/sort-a-stack_985275
 
 #include<iostream>
 #include<bits/stdc++.h>
@@ -30,7 +29,6 @@ void solve(stack<int> &stack){
     sort(stack, store);
 }
 
-void sortStack(stack<int> &stack)
-{
+void sortStack(stack<int> &stack){
 	solve(stack);
 }

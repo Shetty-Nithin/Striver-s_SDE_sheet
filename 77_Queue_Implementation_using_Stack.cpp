@@ -1,6 +1,5 @@
 // Link : https://leetcode.com/problems/implement-queue-using-stacks/submissions/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 #include<string>
@@ -10,7 +9,6 @@ class MyQueue {
     stack<int> st1;
     stack<int> st2;
 public:
-    
     void push(int x) {
         while(st2.size()){
             st1.push(st2.top());
@@ -48,8 +46,7 @@ public:
 class MyQueue {
     stack<int> st1;
     stack<int> st2;
-public:
-    
+public: 
     void push(int x) {
         st1.push(x);
     }

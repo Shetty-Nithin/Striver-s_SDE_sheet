@@ -6,8 +6,7 @@
 using namespace std;
 
 // Approach 1: 
-vector<int> mergeKSortedArrays(vector<vector<int>>&kArrays, int k)
-{
+vector<int> mergeKSortedArrays(vector<vector<int>>&kArrays, int k){
     priority_queue<int, vector<int>, greater<int>> minHeap;
     vector<int> res;
     
@@ -47,8 +46,7 @@ class compare {
         }
 };
 
-vector<int> mergeKSortedArrays(vector<vector<int>>&kArrays, int k)
-{
+vector<int> mergeKSortedArrays(vector<vector<int>>&kArrays, int k){
     priority_queue<Node*, vector<Node*>, compare> minHeap;
     vector<int> res;
     

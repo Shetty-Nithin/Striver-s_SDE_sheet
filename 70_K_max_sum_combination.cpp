@@ -1,4 +1,5 @@
-// Link : 
+// Link : https://www.codingninjas.com/codestudio/problems/k-max-sum-combinations_975322?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website
+// Link : https://www.interviewbit.com/problems/maximum-sum-combinations/
 
 #include<iostream>
 #include<bits/stdc++.h>
@@ -7,11 +8,11 @@ using namespace std;
 
 vector<int> kMaxSumCombination(vector<int> &A, vector<int> &B, int n, int k){
     vector<int> res;
-    sort(A.begin(), A.end(), greater<int>());
+    sort(A.begin(), A.end(), greater<int>()); // descending order
     sort(B.begin(), B.end(), greater<int>());
     
-    priority_queue<int> mH;
-    for(int i=0; i<=k/2+1; i++){
+    priority_queue<int> mH; // max heap
+    for(int i=0; i<=k/2+1; i++){ // k/2 becuase : max+max. As we go along an array, value will be decreased. Our intension is to get the max values.
         for(int j=0; j<=k/2+1; j++){
             mH.push(A[i]+B[j]);
         }
@@ -36,14 +37,13 @@ vector<int> KMaxCombinations(vector<int>& A,vector<int>& B, int K)
     vector<int> ans;
     int N = A.size();
 
-    priority_queue<pair<int, pair<int, int> > > pq;
+    priority_queue<pair<int, pair<int, int>>> pq;  // max heap
     set<pair<int, int> > my_set;
 
     pq.push(make_pair(A[0] + B[0], make_pair(0, 0)));
     my_set.insert(make_pair(0, 0));
 
     for (int count=0; count<K; count++) {
-
         pair<int, pair<int, int> > temp = pq.top();
         pq.pop();
 

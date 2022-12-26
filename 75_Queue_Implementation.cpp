@@ -4,7 +4,6 @@
 using namespace std;
 
 // approach 1 : Using Arrays
-
 class queue{
     int size;
     int *arr;
@@ -60,17 +59,10 @@ class queue{
         }
     }
 };
- 
-
-
-
-
 
 
 
 // approach 2 : Using Linked list
-
-
 // Circular Linked List
 class MyCircularQueue {
     int size;      
@@ -87,12 +79,12 @@ public:
     
     bool enQueue(int value) {
         if((front == 0 && rear == size-1) || (front == rear+1)){
-            cout << front-1 << size-1<< endl;
+            cout << front-1 << size-1<< "queue is full" << endl;
             return false;
-        }else if(front == -1){
+        }else if(front == -1){ // no values are present in the queue, so start from the begining.
             front = 0;
             rear = 0;
-        }else if(rear == size-1 && front != 0){
+        }else if(rear == size-1 && front != 0){ //[, , , x, y, z]
             rear = 0;
         }else{
             rear++;;

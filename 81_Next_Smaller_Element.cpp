@@ -1,13 +1,13 @@
-// Link : https://www.codingninjas.com/codestudio/problems/1112581?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=1
-
+// Link : https://www.codingninjas.com/codestudio/problems/next-smaller-element_1112581
+// Link : https://www.interviewbit.com/problems/nearest-smaller-element/
 
 #include<iostream>
 #include<bits/stdc++.h>
 #include<string>
 using namespace std;
 
-vector<int> nextSmallerElement(vector<int> &arr, int n)
-{
+// approach 1:
+vector<int> nextSmallerElement(vector<int> &arr, int n){
     stack<int> st;
     vector<int> ans(n);
     
@@ -30,10 +30,25 @@ vector<int> nextSmallerElement(vector<int> &arr, int n)
 }
 
 
+// approach 2:
+vector<int> nextSmallerElement(vector<int> &arr, int n){
+   	stack<int> stk;
+    stk.push(-1);
+    vector<int> ans(n);
+    
+    for(int i=n-1; i>=0; i--){
+        int curr = arr[i];
+        while(stk.top() >= curr){
+            stk.pop();
+        }
+        ans[i] = stk.top();
+        stk.push(curr);
+    }
+    return ans;
+}
 
+// approach 3:
 // Interview Bit slightly different problem
-// Link : https://www.interviewbit.com/problems/nearest-smaller-element/
-
 vector<int> prevSmaller(vector<int> &arr) {
     int n = arr.size();
     stack<int> st;

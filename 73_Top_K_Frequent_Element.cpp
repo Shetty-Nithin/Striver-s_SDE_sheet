@@ -1,6 +1,5 @@
 // Link : https://leetcode.com/problems/top-k-frequent-elements/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 #include<string>
@@ -8,8 +7,7 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> topKFrequent(vector<int>& nums, int k) {
-        
+    vector<int> topKFrequent(vector<int>& nums, int k) { 
         unordered_map<int, int> u_map;
         vector<int> frequentElem;
         priority_queue<pair<int, int>> maxHeap;
@@ -35,8 +33,7 @@ public:
 // Aprroach 2: with slight change
 class Solution {
 public:
-    vector<int> topKFrequent(vector<int>& nums, int k) {
-        
+    vector<int> topKFrequent(vector<int>& nums, int k) { 
         unordered_map<int, int> u_map;
         vector<int> frequentElem;
         priority_queue<pair<int, int>> maxHeap;

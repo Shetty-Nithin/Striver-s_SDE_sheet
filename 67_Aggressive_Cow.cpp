@@ -7,21 +7,19 @@
 using namespace std;
 
 bool isPossible(vector<int> &stalls, int k, int mid){
-    
     int cowCount = 1;
-    int lastCow = stalls[0];
+    int lastCow = stalls[0]; // start placing the cows from first position
     for(int i=0; i<stalls.size(); i++){
-        if(stalls[i] - lastCow >= mid){
+        if(stalls[i] - lastCow >= mid){ // if adequate distance is present between these 2 positions
             cowCount++;
             lastCow = stalls[i];
-            if(cowCount == k) return true;
+            if(cowCount == k) return true; // if all the cows are positioned
         }
     }
     return false;
 }
 
-int aggressiveCows(vector<int> &stalls, int k)
-{
+int aggressiveCows(vector<int> &stalls, int k){
     sort(stalls.begin(), stalls.end());
     int start = 0;
     int end = stalls[stalls.size()-1];
@@ -31,7 +29,7 @@ int aggressiveCows(vector<int> &stalls, int k)
     while(start <= end){
         if(isPossible(stalls, k, mid)){
             ans = mid;
-            start = mid+1;
+            start = mid+1; // Becuase we need largest minimum distance
         }else{
             end = mid-1;
         }
@@ -76,3 +74,9 @@ int chessTournament(vector<int> positions , int n ,  int c){
     
     return focusLevel;
 }
+
+/*
+Intuition for Binary Search : If the one particular number is not possible, then the number less/greater
+                              than that number is also not possible, in this case we can apply binary search to
+                              reduce the search space.
+*/

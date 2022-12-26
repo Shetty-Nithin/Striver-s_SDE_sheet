@@ -31,8 +31,7 @@ public:
 };
 
 // Coding Ninjas : Kth smallest and largest
-vector<int> kthSmallLarge(vector<int> &nums, int n, int k)
-{
+vector<int> kthSmallLarge(vector<int> &nums, int n, int k){
     vector<int> res(2);
     priority_queue <int> maxHeap;
 

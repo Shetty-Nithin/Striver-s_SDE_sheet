@@ -1,5 +1,4 @@
-// Link : https://www.codingninjas.com/codestudio/problems/k-max-sum-combinations_975322?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website
-// Link : https://www.interviewbit.com/problems/maximum-sum-combinations/
+// Link : https://leetcode.com/problems/find-median-from-data-stream/
 
 #include<iostream>
 #include<bits/stdc++.h>
@@ -11,7 +10,6 @@ private:
     priority_queue<int> maxHeap;
     priority_queue<int, vector<int>, greater<int>> minHeap;
 public:
-    
     void addNum(int num) {
         (maxHeap.empty() || maxHeap.top() > num)
             ? maxHeap.push(num)

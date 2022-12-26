@@ -6,9 +6,7 @@ Implementation of Stack.
 #include<stack>
 using namespace std;
 
-
 // approach 1 : using array.
-
 // class Stack {
 //     public:
 //     int *arr;
@@ -59,7 +57,6 @@ using namespace std;
 
 
 // approach 2 : using linked list.
-
 struct Node {
     int data;
     Node* next;
@@ -175,7 +172,7 @@ vector<int> maxXorQueries(vector<int> &arr, vector<vector<int>> &queries){
     for(int i=0; i<queries.size(); i++){
         int ithAns = -1;
         for(int j=0; j<arr.size(); j++){
-            if(arr[j] > queries[i][1]) break;
+            if(arr[j] > queries[i][1]) break; // because arr is sorted in ascending order
             ithAns = max(ithAns, queries[i][0]^arr[j]);
         }
         ans.push_back(ithAns);

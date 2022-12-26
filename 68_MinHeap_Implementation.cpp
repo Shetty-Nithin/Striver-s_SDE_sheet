@@ -1,6 +1,5 @@
 // Link : https://www.codingninjas.com/codestudio/problems/min-heap_4691801?topList=striver-sde-sheet-problems&utm_source=striver&utm_medium=website&leftPanelTab=0
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 #include<string>
@@ -16,13 +15,13 @@ class mHeap {
             size = 0;
         }
 
-        void push(int val){
+        void push(int val){ 
             size++;
             int index = size;
             arr[index] = val;
             
             int parent;
-            while(index > 1){
+            while(index > 1){  
                 parent = index/2;
                 if(arr[parent] > arr[index]){
                     swap(arr[parent], arr[index]);

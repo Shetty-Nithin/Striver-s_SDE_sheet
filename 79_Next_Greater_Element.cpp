@@ -1,11 +1,9 @@
 // Link : https://leetcode.com/problems/next-greater-element-i/
 
-
 #include<iostream>
 #include<bits/stdc++.h>
 #include<string>
 using namespace std;
-
 
 //Brute Force
 class Solution {
@@ -26,10 +24,10 @@ public:
                 }
                 
                 if(ansSize != ans.size()){
-                    break;
+                    break; // next greater was found and pushed to the ans array at line 21
                 }
                 if(j == nums2.size()-1){
-                    ans.push_back(-1);
+                    ans.push_back(-1); // next greater is not found in nums2 array.
                 }
             }
         }
@@ -47,20 +45,22 @@ public:
         vector<int> ans;
         
         st.push(-1);
-        
+        // for storing the next greater element in an array to avoid the 3 for loop as in the above solution
         for(int i=nums2.size()-1; i>=0; --i){
             if(st.top() > nums2[i]){
                 nextGreater[i] = st.top();
                 st.push(nums2[i]);
             }else{
-                while(st.top() <= nums2[i]){
+                while(st.top() <= nums2[i]){ // pop all the element which are <= current nums2[i] element.
                     if(st.top() == -1){
-                        nextGreater[i] = st.top();
+                        nextGreater[i] = st.top(); // or -1
                         st.push(nums2[i]);
                         break;
                     }
                     else st.pop();
                 }
+                // this if is required when the greater element is found before hitting the -1 value while
+                // popping using while condition
                 if(st.top() > nums2[i]){
                     nextGreater[i] = st.top();
                     st.push(nums2[i]);
